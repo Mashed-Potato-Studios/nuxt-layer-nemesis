@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { SITE, SOCIAL_MEDIA, LOGO_IMAGE} from "../config";
 import {BlogPost} from "../types";
-import Layout from "./Layout.vue";
-import Header from "../components/Header.vue";
 
 
 export interface PostLayoutProps {
@@ -20,7 +18,18 @@ const next = pageNumber < totalPages ? `/blog/page/${pageNumber + 1}` : null;
   <Layout :title="SITE.title">
       <Header/>
       <Main>
-
+        <ul>
+          {{
+          posts.forEach((post) => {
+            return (
+              <CardSimple />
+            )
+          }) 
+             }}
+        </ul>
       </Main>
+      {{ 
+      
+      }}
   </Layout>
 </template>
