@@ -19,6 +19,7 @@ export const LOCALE = ['en-US', 'ja-JP'];
 export const LOGO_IMAGE = {
     enable: false,
     svg: true,
+    alt: 'Nemesis',
     width: 206,
     height: 50
 }

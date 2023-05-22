@@ -36,3 +36,16 @@ export type SocialMedia =
     | 'snapchat'
     | 'reddit'
     | 'pinterest';
+
+
+export type BlogPost = {
+    author: string;
+    publishedDateAt: Date;
+    title: string;
+    blogSlug?: string;
+    featured?: boolean;
+    draft?: boolean;
+    tags?: string[];
+    ogpImage?: string;
+    description?: string;
+}
