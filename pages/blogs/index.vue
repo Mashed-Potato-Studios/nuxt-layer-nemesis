@@ -1,13 +1,20 @@
 <template>
     <div>
-        <PostLayout pageNumber="1" posts="filteredPosts" totalPages="totalPages.length"/>
+        <PostLayout :posts="sortedPosts" :total-pages="totalPages.length"/>
     </div>
 </template>
 
 <script setup lang="ts">
-const postQuery = await queryContent('posts')
+const postQuery = await queryContent('blogs').find()
 
-// const sortedPosts = 
+console.log("BLOGS", postQuery)
+
+// Sort Function
+const sortedPosts = useSort(postQuery)
+console.log(sortedPosts)
+
+const totalPages = usePageNumbers(sortedPosts.length)
+console.log(totalPages)
 </script>
 
 <style scoped>

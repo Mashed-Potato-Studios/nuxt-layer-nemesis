@@ -9,23 +9,21 @@ export interface PostLayoutProps {
   posts: BlogPost[]
 }
 
-const {pageNumber, totalPages, posts} = defineProps<PostLayoutProps>();
+const props = defineProps<PostLayoutProps>();
 
-const prev = pageNumber > 1 ? `/blog/page/${pageNumber - 1}` : null;
-const next = pageNumber < totalPages ? `/blog/page/${pageNumber + 1}` : null;
+console.log("POSTS LAYOUT", props.posts)
+
+// const prev = pageNumber > 1 ? `/blog/page/${pageNumber - 1}` : null;
+// const next = pageNumber < totalPages ? `/blog/page/${pageNumber + 1}` : null;
 </script>
 <template>
   <Layout :title="SITE.title">
       <Header/>
       <Main>
         <ul>
-          {{
-          posts.forEach((post) => {
-            return (
-              <CardSimple />
-            )
-          }) 
-             }}
+          <li v-for="post in props.posts" :key="post">
+              <CardBlog :blog="post" /> {{post}}
+          </li>
         </ul>
       </Main>
       {{ 
