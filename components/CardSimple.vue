@@ -10,27 +10,18 @@ export interface CardSimpleProps {
 
 const { href, blog, heading} = defineProps<CardSimpleProps>();
 
-const { author, publishedDateAt, title, blogSlug, featured, draft, tags, description } = blog
+const { author, publishedDateAt, title, blogSlug, featured, draft, tags, description, ogpImage } = blog
 </script>
 <template>
-    <div class="max-w-2xl px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <div class="flex items-center justify-between">
-        <span class="text-sm font-light text-gray-600 dark:text-gray-400">{{ publishedDateAt }}</span>
-        <a v-for="tag in tags" :key="tag" class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500" tabindex="0" role="button">{{ tag }}</a>
-    </div>
+    <a class="relative flex flex-col items-start justify-end col-span-12 px-5 pb-5 overflow-hidden bg-gray-800 cursor-pointer h-96 md:col-span-6 lg:col-span-3 group">
 
-    <div class="mt-2">
-        <a href="#" class="text-xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline" tabindex="0" role="link">{{ title }}</a>
-        <p class="mt-2 text-gray-600 dark:text-gray-300">{{ description }}</p>
-    </div>
+          <img class="absolute inset-0 object-cover object-center w-full h-full transition duration-300 ease-out transform scale-100 group-hover:scale-105" src="https://cdn.devdojo.com/images/may2021/blog-img-1.jpg">
 
-    <div class="flex items-center justify-between mt-4">
-        <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline" tabindex="0" role="link">Read more</a>
-
-        <div class="flex items-center">
-            <img class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80" alt="avatar">
-            <a class="font-bold text-gray-700 cursor-pointer dark:text-gray-200" tabindex="0" role="link">{{ author }}</a>
-        </div>
-    </div>
-</div>
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent to-gray-900 opacity-90"></span>
+          <span class="bg-purple-500 text-white px-2 py-0.5 inline relative text-xs mb-3 uppercase">{{ tags[0] }}</span>
+          <span class="relative mb-3 text-xl font-bold leading-tight text-white">{{ title }}</span>
+          <span class="relative flex text-xs text-white opacity-90">
+                    <span class="mr-1 font-semibold">{{author}}</span>·<span class="ml-1">{{ publishedDateAt }}</span>
+                </span>
+        </a>
 </template>

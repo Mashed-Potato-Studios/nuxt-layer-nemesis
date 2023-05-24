@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { SITE, SOCIAL_MEDIA, LOGO_IMAGE} from "../config";
 import {BlogPost} from "../types";
+import MainLayout from "~/components/MainLayout.vue";
 
 
 export interface PostLayoutProps {
@@ -17,17 +18,13 @@ console.log("POSTS LAYOUT", props.posts)
 // const next = pageNumber < totalPages ? `/blog/page/${pageNumber + 1}` : null;
 </script>
 <template>
-  <Layout :title="SITE.title">
       <Header/>
-      <Main>
-        <ul>
-          <li v-for="post in props.posts" :key="post">
-              <CardBlog :blog="post" /> {{post}}
-          </li>
-        </ul>
-      </Main>
-      {{ 
-      
-      }}
-  </Layout>
+
+       <MainLayout title="Blog" pageDescription="This is the blog page">
+
+
+            <CardSimple v-for="post in props.posts" :key="post.blogSlug" :blog="post" :href="`/blog/${post.blogSlug}`" />
+
+      </MainLayout>
+
 </template>
