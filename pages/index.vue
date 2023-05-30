@@ -9,36 +9,46 @@ definePageMeta({
 })
 </script>
 <template>
-  <Layout title="">
-      <main id="main-content">
-          <section id="hero">
-              <h1>Nemesis Layer</h1>
-              <a
-        target="_blank"
-        href="/rss.xml"
-        class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
+  <div>
+    <Hero />
+    <div class="py-12 md:py-24">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-20">
+          <h2 class="text-xs text-indigo-500 font-medium title-font">
+            YAARD MAN A DO IT
+          </h2>
+          <h1 class="sm:text-3x1 text-4x1 mb-4 text-gray-900">
+            Featured Posts
+          </h1>
+        </div>
+        <div class="flex flex-wrap">
+          <PostCard v-for="item in post" :key="item.slug" :item="item" />
+        </div>
+      </div>
+    </div>
+    <div class="py-12 bg-gray-200 md:py-24">
+      <div
+        class="max-w-screen-xl px-6 mx-auto mb-12 lg:px-8 xl:px-4 lg:mb-16 xl:mb-24"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
-      </a>
-              <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-          </section>
-
-          <hr>
-
-<!--          Display Social Links Here -->
-
-      </main>
-  </Layout>
+        <div class="mb-6 text-center md:mb-8">
+          <h2
+            class="mb-2 text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl md:mb-4"
+          >
+            Projects
+          </h2>
+          <p class="text-lg text-gray-300 xl:text-xl">
+            Various Framework including React.js, Nuxt.js, & Vue.js
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-wrap">
+        <ProjectCard
+          v-for="item in projects"
+          :key="item.slug"
+          :item="item"/>
+      </div>
+    </div>
+  </div>
 </template>
 <style>
 #main-content {
