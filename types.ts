@@ -18,6 +18,7 @@ export type SocialMediaObjects = {
     url: string;
     active: boolean;
     linkTitle: string;
+    svg?: string;
 }
 
 export type SocialIcons = {
@@ -48,4 +49,26 @@ export type BlogPost = {
     tags?: string[];
     ogpImage?: string;
     description?: string;
+}
+
+export type Author = {
+    name: string;
+    image: string;
+
+}
+
+export interface PostCardProps {
+	slug: string;
+	title: string;
+	ogImage: object;
+	tag: string[];
+    draft: boolean;
+    featured: boolean;
+	description: string;
+	publishedAt: Date;
+	author: string;
+    language: string;
+    readTime: number;
+    rating: number;
+
 }

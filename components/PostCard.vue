@@ -1,13 +1,12 @@
 <script setup lang="ts">
-export interface PostCardProps {
-	slug: string;
-	title: string;
-	tag: string;
-	description: string;
-	createdAt: Date;
-	author: Object;
-}
-const { slug, title, tag, description, createdAt, author } = defineProps<PostCardProps>()
+import { PostCardProps } from "~/types";
+
+const props = defineProps<{
+    item: PostCardProps;
+}>()
+
+const { title, ogImage, author, draft, featured, language, tags, rating, readTime, slug, publishedAt, description } = props.item
+
 </script>
 <template>
 <div>
@@ -17,7 +16,7 @@ const { slug, title, tag, description, createdAt, author } = defineProps<PostCar
 	  <div
 		class="top-0 left-0 mt-3 px-2 rounded-lg absolute z-30 bg-green-500 text-gray-100 text-xs md:text-sm font-medium md:block"
 	  >
-		{{ item.tag }}
+		<p>{{ tags[0] }}</p>
 	  </div>
 	  <div
 		class="top-0 left-0 h-2 md:h-3 mt-5 px-2 absolute z-20 bg-green-500"
@@ -29,28 +28,28 @@ const { slug, title, tag, description, createdAt, author } = defineProps<PostCar
 		<div class="relative">
 		  <!-- :src="image.largeImageURL"     -->
 		  <img
-			:src="item.img"
+			:src="ogImage.url"
 			class="max-h-60 object-cover rounded-t-xl"
-			:alt="item.title"
+			:alt="title"
 		  />
 		  <!-- Tag rekomendasi -->
 		  <div
 			class="bottom-0 right-0 mb-2 mr-2 px-2 rounded-lg absolute bg-yellow-500 text-gray-100 text-xs font-medium"
 		  >
-			{{ item.language }}
+			{{ language }}
 		  </div>
 		</div>
 		<div class="px-2 py-1">
 		  <!-- Product Title -->
 		  <div class="text-sm md:text-base font-bold pr-2">
-			{{ item.title }}
+			{{ title }}
 		  </div>
 		  <div class="flex py-2">
 			<!-- Distance -->
 			<div
 			  class="bg-gray-200 p-1 mr-2 rounded-full text-xs font-medium text-gray-900"
 			>
-			  {{ item.readTime }} mins
+			  {{ readTime }} mins
 			</div>
 			<div class="flex justify-between item-center">
 			  <div class="flex items-center">
@@ -66,7 +65,7 @@ const { slug, title, tag, description, createdAt, author } = defineProps<PostCar
 				</svg>
 				<!-- Rating total -->
 				<p class="text-gray-600 font-bold text-xs md:text-sm ml-1">
-				  {{ item.rating }}
+				  {{ rating }}
 				  <!-- Jumlah review -->
 				  <span class="text-gray-500 font-normal">(0 ratings)</span>
 				</p>
@@ -75,12 +74,12 @@ const { slug, title, tag, description, createdAt, author } = defineProps<PostCar
 		  </div>
 		  <!-- Alamat -->
 		  <p class="pb-1 md:pb-2 text-xs md:text-sm text-gray-500">
-			{{ item.description }}
+			{{ description }}
 		  </p>
 		  <!-- Tombol pesan -->
 		  <NuxtLink
 			class="inset-x-0 bottom-0 flex justify-center bg-blue-500 hover:bg-white text-sm md:text-base border hover:border-2 hover:border-blue-500 rounded-xl w-14 md:w-16 p-1 text-gray-100 hover:text-blue-900"
-			:to="{ name: 'blog-slug', params: { slug: item.slug } }"
+			:to="`/blogs/${ slug }`"
 			>Read</NuxtLink
 		  >
 		</div>

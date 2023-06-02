@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import { SITE, SOCIAL_MEDIA} from "~/config";
+import {PostCardProps} from "~/types";
+import {ParsedContent} from "@nuxt/content/dist/runtime/types";
 
 
 const socialLinks = SOCIAL_MEDIA.filter(link => link.active).length
+const postQuery: ParsedContent[] = await queryContent('blogs').find()
+
+// Cast postQuery to PostCardProps
+const postQueryProps = postQuery as unknown as PostCardProps[]
+
+console.log("BLOGS", postQuery)
 
 definePageMeta({
     layout: "index",
@@ -22,7 +30,7 @@ definePageMeta({
           </h1>
         </div>
         <div class="flex flex-wrap">
-          <PostCard v-for="item in post" :key="item.slug" :item="item" />
+          <PostCard v-for="item in postQueryProps" :key="item.slug" :item="item" />
         </div>
       </div>
     </div>
@@ -42,10 +50,10 @@ definePageMeta({
         </div>
       </div>
       <div class="flex flex-wrap">
-        <ProjectCard
-          v-for="item in projects"
-          :key="item.slug"
-          :item="item"/>
+<!--        <ProjectCard-->
+<!--          v-for="item in projects"-->
+<!--          :key="item.slug"-->
+<!--          :item="item"/>-->
       </div>
     </div>
   </div>

@@ -8,23 +8,26 @@
 			  <h1
 				class="mb-2 text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl md:mb-4 lg:mb-8"
 			  >
-				Vantol R. Bennett
+				Nemesis Nuxt Layer
 			  </h1>
 			  <p class="mb-6 text-sm text-gray-400 xl:text-xl lg:mb-8 xl:mb-10">
-				Jamaican Educator & Developer at (MPS), Founder of Zhyjenae
+				TailWindCSS, Nuxt.js, Content@2 Vue.js, &amp; Netlify
 			  </p>
 			  <h1
 				class="mb-2 text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl md:mb-4 lg:mb-8"
 			  >
-				The best way to write code all day...
+				Try out Nuxt Layers
 			  </h1>
 			  <p class="mb-6 text-lg text-gray-600 xl:text-xl lg:mb-8 xl:mb-10">
-				is by doing it! Evolve with innovation
-			  </p>
+					<div class="social-links">
+						<SocialButton />
+					</div>
+
+				</p>
 			</div>
 			<div class="order-1 col-span-2 md:order-2 xl:col-span-3">
 			  <img
-				src="https://res.cloudinary.com/ddszyeplg/image/upload/v1656478354/IMG_1412_orxemy.jpg"
+				src="https://images.unsplash.com/photo-1617042375876-a13e36732a04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
 				class="rounded-lg shadow-2xl"
 				alt="Vantol Bennett"
 			  />
@@ -33,3 +36,10 @@
 		</div>
 	</div>
 </template>
+<script setup lang="ts">
+</script>
+<style>
+ .social-links {
+    @apply mr-2 mb-1 whitespace-nowrap sm:mb-0;
+  }
+</style>
